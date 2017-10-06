@@ -1,9 +1,17 @@
 // @flow
 
 import React from 'react'
-import Layout from 'containers/Layout'
+import Loadable from 'react-loadable'
+
 import logo from './logo.svg'
 import './App.css'
+
+const Loading = () => <div>Loading...</div>
+
+const Layout = Loadable({
+  loader: () => import('./containers/Layout'),
+  loading: Loading,
+})
 
 function App() {
   return (
