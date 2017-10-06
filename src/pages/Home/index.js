@@ -1,22 +1,11 @@
 // @flow
 
-import React from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
+import Home from './Home'
+import connectQuery from './connectQuery'
 
-function Home({
-  redux: { name },
-}: {
-  redux: {
-    name: string,
-  },
-}) {
-  return (
-    <div>
-      <h2>Home,</h2>
-      <h3>{name}</h3>
-      <div><b>{name}</b> is bind from redux</div>
-    </div>
-  )
-}
-
-export default connect(state => ({ redux: state.app }))(Home)
+export default compose(
+  connect(state => ({ redux: state.app })),
+  connectQuery,
+)(Home)

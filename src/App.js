@@ -1,13 +1,16 @@
 // @flow
 
 import React from 'react'
-import { Provider } from 'react-redux'
+import { ApolloProvider } from 'react-apollo'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import configureStore from './store/configureStore'
+import configureApollo from './store/configureApollo'
+import createReducer from './reducers'
 
 const Loading = () => <div>Loading...</div>
 
+// Use react-reloadable for code split
 const Home = Loadable({
   loader: () => import('./pages/Home'),
   loading: Loading,
@@ -18,12 +21,14 @@ const About = Loadable({
   loading: Loading,
 })
 
-const store = configureStore()
+const client = configureApollo({ uri: 'https://www.graphqlhub.com/graphql' })
+const reducer = createReducer(client)
+const store = configureStore({ reducer })
 
 function App() {
   return (
     <Router>
-      <Provider store={store}>
+      <ApolloProvider store={store} client={client}>
         <div>
           <ul>
             <li>
@@ -39,7 +44,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
         </div>
-      </Provider>
+      </ApolloProvider>
     </Router>
   )
 }
