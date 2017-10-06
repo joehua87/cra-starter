@@ -1,30 +1,10 @@
 [ignore]
-.*/node_modules/mitt/.*
-.*/node_modules/draft-js/.*
-.*/node_modules/fbjs/.*
-.*/node_modules/config-chain/.*.json
-.*/node_modules/npmconf/.*.json
-.*/node_modules/graphql/.*.flow
-.*/node_modules/immutable/.*.flow
-.*/node_modules/react-apollo/.*.flow
-.*/node_modules/rc-util/.*
-.*/node_modules/babel-plugin-transform-react-remove-prop-types/.*
-.*/node_modules/@joehua/web-components/.*.flow
-.*/node_modules/@joehua/web-components/components/.*
-.*/node_modules/@joehua/web-components/.storybook/.*
-.*/node_modules/radium/.*.js
-.*/node_modules/react-countup/.*.js
-.*/node_modules/react-event-listener/.*.js
-.*/node_modules/react-progressive-image/index.js
 
 [include]
 
 [libs]
-types/
 
 [options]
 module.system=haste
 module.system.node.resolve_dirname=src
 module.system.node.resolve_dirname=node_modules
-
-module.name_mapper='.*\.ya?ml$' -> 'YmlModule'
