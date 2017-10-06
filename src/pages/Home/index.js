@@ -1,11 +1,22 @@
 // @flow
 
 import React from 'react'
+import { connect } from 'react-redux'
 
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
+function Home({
+  redux: { name },
+}: {
+  redux: {
+    name: string,
+  },
+}) {
+  return (
+    <div>
+      <h2>Home,</h2>
+      <h3>{name}</h3>
+      <div><b>{name}</b> is bind from redux</div>
+    </div>
+  )
+}
 
-export default Home
+export default connect(state => ({ redux: state.app }))(Home)

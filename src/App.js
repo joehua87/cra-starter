@@ -1,8 +1,10 @@
 // @flow
 
 import React from 'react'
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
+import configureStore from './store/configureStore'
 
 const Loading = () => <div>Loading...</div>
 
@@ -16,24 +18,28 @@ const About = Loadable({
   loading: Loading,
 })
 
+const store = configureStore()
+
 function App() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
+      <Provider store={store}>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
 
-        <hr />
+          <hr />
 
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-      </div>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </div>
+      </Provider>
     </Router>
   )
 }
