@@ -16,12 +16,10 @@
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "semi": [2, "never"],
     "linebreak-style": 0,
+    "function-paren-newline": 0,
     "no-underscore-dangle": 0,
-    // We use the 'import' plugin which allows for cases "flow" awareness.
     "no-duplicate-imports": 0,
-    // A .jsx extension is not required for files containing jsx.
     "react/jsx-filename-extension": 0,
-    // This rule struggles with flow and class properties.
     "react/sort-comp": 0,
     "max-len": 0,
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],

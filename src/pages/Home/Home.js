@@ -7,7 +7,7 @@ function Home({
   data: {
     twitter,
     loading,
-  }
+  },
 }: {
   redux: {
     name: string,

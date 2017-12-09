@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux'
 import app from './app'
 
-export default function createReducer(apolloClient) {
+export default function createReducer() {
   return combineReducers({
     app,
-    apollo: apolloClient.reducer(),
   })
 }
 

@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-function Layout() {
+function Layout({ children }: { children: any }) {
   return (
     <div>
-      Layout
+      {children}
     </div>
   )
 }

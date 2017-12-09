@@ -1,23 +1,25 @@
-// @flow
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'isomorphic-fetch'
 
-import { ApolloClient, createNetworkInterface } from 'react-apollo'
+// Polyfill fetch() on the server (used by apollo-client)
+if (!process.browser) {
+  global.fetch = fetch
+}
 
-export default function configureApollo({
-  uri,
-}: {
-  uri: string,
-}) {
+export default function configureApollo({ uri }: { uri: string }) {
   return new ApolloClient({
-    ssrMode: false,
     dataIdFromObject: result => result._id || result.id,
-    networkInterface: createNetworkInterface({
+    link: new HttpLink({
       uri,
-      // opts: {
-      //   credentials: 'same-origin',
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // },
+      opts: {
+        credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      },
     }),
+    cache: new InMemoryCache(),
   })
 }

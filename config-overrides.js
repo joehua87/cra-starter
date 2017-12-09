@@ -5,6 +5,6 @@ module.exports = function override(
   // env,
 ) {
   // do stuff with the webpack config...
-  config.resolve.modules.push('/src')
+  config.resolve.modules.push('./src')
   return config
 }
