@@ -1,6 +1,7 @@
 [ignore]
 .*/node_modules/graphql/.*.flow
 .*/node_modules/react-apollo/.*.flow
+.*/node_modules/rc-.*
 
 [include]
 
